@@ -12,7 +12,7 @@ export const Logo: NextPage<LogoProps> = ({text="Spotify Music Finder"}) => {
         href="/"
             sx={{
               height: "25%",
-              width: "25vw",
+              width: "100%",
               padding: "6px",
               display: "flex",
               flexDirection: "row",
@@ -21,8 +21,8 @@ export const Logo: NextPage<LogoProps> = ({text="Spotify Music Finder"}) => {
           >
             <Box
               sx={{
-                width: 56,
-                height: 56,
+                width: 100,
+                p: 3,
                 bg: "lighterBg",
                 alignItems: "center",
                 textAlign: "center",
@@ -31,7 +31,7 @@ export const Logo: NextPage<LogoProps> = ({text="Spotify Music Finder"}) => {
               }}
             >
               <Text
-                sx={{ alignSelf: "center", marginTop: 18, fontWeight: "700" }}
+                sx={{ alignSelf: "center",fontWeight: "700" }}
               >
                 SMF
               </Text>

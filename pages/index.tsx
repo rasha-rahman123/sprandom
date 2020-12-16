@@ -95,7 +95,7 @@ export const Home: NextPage<indexProps> = ({}) => {
             gridTemplateRows: "10% 60% 30%",
             width: "100%",
             height: "100%",
-            overflow: "hidden",
+        
           }}
         >
           <Box
@@ -178,7 +178,7 @@ export const Home: NextPage<indexProps> = ({}) => {
                 width: "100%",
                 display: "flex",
                 flexDirection: "row",
-                justifyContent: "space-between",
+                justifyContent: ["space-around","space-around","space-between"],
               }}
             >
               <Box
@@ -258,14 +258,14 @@ export const Home: NextPage<indexProps> = ({}) => {
             {saves && 
             // @ts-ignore
             saves.slice(page * 4 - 4, page * 4).length > 0 && (
-              <Box sx={{ width: "100%", mb: 2 }}>
+              <Box sx={{ width: "100%", mt: -5 }}>
                 <Text sx={{ color: "yellowText", fontSize: 28, mb: 2 }}>
                   Your Liked Finds
                 </Text>
                 <Box
                   sx={{
                     display: "grid",
-                    gridTemplateColumns: "20% 20% 20% 20% 20%",
+                    gridTemplateColumns: ["50% 50%","33% 33% 33%","20% 20% 20% 20% 20%"],
                     flexDirection: "row",
                   }}
                 >
@@ -273,7 +273,7 @@ export const Home: NextPage<indexProps> = ({}) => {
                   // @ts-ignore
                     saves.slice(page * 4 - 4, page * 4).length > 0 &&
                     // @ts-ignore
-                    filteredSaves.slice(page * 4 - 4, page * 4).map((x, i) => (
+                    filteredSaves.reverse().slice(page * 4 - 4, page * 4).map((x, i) => (
                       <Box
                         as="a"
                         href={x.external}

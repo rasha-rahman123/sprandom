@@ -20,11 +20,52 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
   return (
   
   <Box>
-       <Box p={3} width="100vw" display={['block','block','none']}>
+       <Box p={3} width="100vw" display={['none','none','none']}>
         {/* @ts-ignore */}
            <Logo />
          <Text sx={{color: 'yellowText', fontSize: 55, fontWeight: '600'}}>  Sorry! Must be on a device with a width bigger than your current device. Try a computer or tablet if you are on a phone right now.</Text>
        </Box>
+
+        <Box display={['block','block','none']} sx={{
+            width: '100vw', minHeight: '100vh'
+        }}>
+            <Box>
+              <Logo />
+            {nav.map((x, i) => (
+            <Box onClick={() => router.push(x.slug)}
+              sx={{
+                width: "100vw",
+                margin: '0 0px',
+                height: "30%",
+                bg: router.asPath === x.slug && "text",
+                my: 2,
+                borderRadius: 32,
+                borderTopRightRadius: 0,
+                borderBottomRightRadius: 0,
+                textAlign: 'left',
+                padding: 3,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+                position: 'relative',
+                cursor: 'pointer',
+                boxShadow: router.asPath === x.slug && '0px 0px 3px #181B1A',
+                ":hover": {
+                    bg: router.asPath !== x.slug && "#0000004e"
+                },
+                
+              }}
+            >
+              <Text sx={{color: router.asPath === x.slug  ? 'orangeText' : 'text', fontSize: 18,fontWeight: '500'}}><Text sx={{display: 'inline', mr: 3}}>{x.icon}</Text>{x.text}</Text>
+             
+            </Box>
+            
+          ))}
+            </Box>
+            <Box bg="text" sx={{minHeight: '100vh', p: 2}} >{children}</Box>
+        </Box>
+
         <Box
       sx={{
         display: "flex",

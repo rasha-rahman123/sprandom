@@ -465,13 +465,13 @@ export const find: NextPage<findProps> = ({}) => {
                   >
                     <Box
                       sx={{
-                        width: 400,
                         borderRadius: 20,
+                        width: 200,
                         padding: 3,
                         margin: "0 auto",
                         position: "absolute",
-                        top: 10,
-                        right: -240,
+                        left: '50%',
+                        backgroundSize: 'cover',
                         display: "flex",
                         flexDirection: "column",
                       }}
@@ -484,6 +484,8 @@ export const find: NextPage<findProps> = ({}) => {
                           bg: "yellowText",
                           color: "text",
                           alignSelf: "center",
+                          position: 'relative',
+                          left: '-50%',
                           my: 2,
                           height: "4rem",
                           boxShadow:
@@ -504,7 +506,8 @@ export const find: NextPage<findProps> = ({}) => {
                           height: "calc(400px * .9)",
                           alignSelf: "center",
                           borderRadius: 20,
-                          position: "relative",
+                          position: 'relative',
+                          left: '-50%',
                           boxShadow:
                             "0px 0px 3px #181B1A,0px 0px 10px #181B1A20",
                         }}
