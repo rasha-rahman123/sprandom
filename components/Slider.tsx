@@ -78,6 +78,7 @@ export const Slider: NextPage<SliderProps> = ({x, i, tempoSlider, min, max, valu
       margin:' 10px 0',
       color: 'yellowText',
   width: '100%'
+  // @ts-ignore
     }} type="range"  min={min} max={max} value={value} onChange={(e) => change(e.target.value)} />
     </Box>);
 }

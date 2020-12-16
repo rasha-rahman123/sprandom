@@ -21,6 +21,7 @@ export const Dropdown: NextPage<DropdownProps> = ({genre, changed, removed, setG
 
     const dropDownChange = (e) => {
        genre.selectedGenre.length < 3 && changed(e);
+       // @ts-ignore
        !genre.selectedGenre.length < 3 && genre.selectedGenre.includes(genre.listOfGenresFromAPI[e])  && removed(e)
     }
 
@@ -48,10 +49,10 @@ export const Dropdown: NextPage<DropdownProps> = ({genre, changed, removed, setG
                    selectedGenre: [],
                    listOfGenresFromAPI: genre.listOfGenresFromAPI
                  })}> Clear Genres <br /></div>}
-                  <div sx={{
+                  <Box sx={{
                    color: '#FFFFFF60',
                    cursor: "none"
-                 }}>{'( ' + genre.selectedGenre.map(x => x + " ") + ')'}</div>
+                 }}>{'( ' + genre.selectedGenre.map(x => x + " ") + ')'}</Box>
                 </Box>
               </Box>
            {<Box sx={{

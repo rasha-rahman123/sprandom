@@ -21,6 +21,7 @@ export const Home: NextPage<indexProps> = ({}) => {
   const [saves, setSaves] = useState();
   const d = useContext(authContext);
   useEffect(() => {
+      // @ts-ignore
     searchVal > 0 && setPage(1);
   }, [searchVal]);
   const signOut = () => {
@@ -72,6 +73,7 @@ export const Home: NextPage<indexProps> = ({}) => {
               newEntities.push(entity);
 
             });
+            // @ts-ignore
             setSaves(newEntities);
           },
           (error) => {
@@ -79,7 +81,7 @@ export const Home: NextPage<indexProps> = ({}) => {
           }
         );
   }, [d]);
-
+// @ts-ignore
   const filteredSaves = saves &&( !searchVal ? saves : saves.filter(save => {
     return  save.artist.indexOf(searchVal) !== -1
   }));
@@ -253,7 +255,9 @@ export const Home: NextPage<indexProps> = ({}) => {
               borderRadius: 20,
             }}
           >
-            {saves && saves.slice(page * 4 - 4, page * 4).length > 0 && (
+            {saves && 
+            // @ts-ignore
+            saves.slice(page * 4 - 4, page * 4).length > 0 && (
               <Box sx={{ width: "100%", mb: 2 }}>
                 <Text sx={{ color: "yellowText", fontSize: 28, mb: 2 }}>
                   Your Liked Finds
@@ -266,7 +270,9 @@ export const Home: NextPage<indexProps> = ({}) => {
                   }}
                 >
                   {saves &&
+                  // @ts-ignore
                     saves.slice(page * 4 - 4, page * 4).length > 0 &&
+                    // @ts-ignore
                     filteredSaves.slice(page * 4 - 4, page * 4).map((x, i) => (
                       <Box
                         as="a"
@@ -299,7 +305,8 @@ export const Home: NextPage<indexProps> = ({}) => {
                       alignItems: "center",
                     }}
                   >
-                    {saves.slice((page + 1) * 4 - 4, (page + 1) * 4).length >
+                    {// @ts-ignore
+                    saves.slice((page + 1) * 4 - 4, (page + 1) * 4).length >
                       0 && (
                       <Text
                         onClick={() => setPage(page + 1)}

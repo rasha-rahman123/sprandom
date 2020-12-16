@@ -15,9 +15,13 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
   ];
 
   const router = useRouter();
+  
+  
   return (
-   <Box>
+  
+  <Box>
        <Box p={3} width="100vw" display={['block','block','none']}>
+        {/* @ts-ignore */}
            <Logo />
          <Text sx={{color: 'yellowText', fontSize: 55, fontWeight: '600'}}>  Sorry! Must be on a device with a width bigger than your current device. Try a computer or tablet if you are on a phone right now.</Text>
        </Box>
@@ -28,6 +32,7 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
         width: "100vw",
         alignSelf: "center",
         padding: 24,
+        // @ts-ignore
         display: ['none','none','flex']
       }}
     >
@@ -40,6 +45,7 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
           flexDirection: "column",
         }}
       >
+          {/* @ts-ignore */}
         <Logo />
         <Box
           sx={{
