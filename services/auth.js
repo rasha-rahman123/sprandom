@@ -55,6 +55,7 @@ export function useProvideAuth() {
 
     return {
         userID: user && user.uid,
+        userEmail: user && user.email,
         signin,
         signup,
         signout

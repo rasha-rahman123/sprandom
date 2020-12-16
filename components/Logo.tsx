@@ -39,6 +39,7 @@ export const Logo: NextPage<LogoProps> = ({text="Spotify Music Finder"}) => {
             <Box sx={{ml: 3}}>
     
               <Text sx={{fontWeight: '700', fontSize: 32}}>{text}</Text>
+              <Text sx={{fontWeight: '700', fontSize: 12}}>by Rasha (rasha.world)</Text>
             </Box>
           </Box>);
 }

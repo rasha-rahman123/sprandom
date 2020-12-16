@@ -114,8 +114,8 @@ export const find: NextPage<findProps> = ({}) => {
   const submit = (e) => {
     e.preventDefault();
 
-    if (genre.selectedGenre.length < 1) {
-      return alert("You must at least add one genre!");
+    if (genre.selectedGenre.length < 2) {
+      return alert("You must add two or three genres!");
     }
     axios(
       `https://api.spotify.com/v1/recommendations?limit=4&market=US&seed_genres=${genre.selectedGenre.join(
@@ -466,7 +466,7 @@ export const find: NextPage<findProps> = ({}) => {
                     <Box
                       sx={{
                         borderRadius: 20,
-                        width: 200,
+                        width: [300,400,700],
                         padding: 3,
                         margin: "0 auto",
                         position: "absolute",

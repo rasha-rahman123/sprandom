@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { NextPage } from "next";
 import Layout from "../components/Layout";
 import { Box, Image, Text } from "rebass";
-import { BsFillPersonFill, BsMusicNoteList, BsSearch } from "react-icons/bs";
+import { BsArrow90DegLeft, BsArrow90DegRight, BsFillPersonFill, BsMusicNoteList, BsSearch } from "react-icons/bs";
 import { Input } from "@rebass/forms";
 import { SiSpotify } from "react-icons/si";
 import { authContext, useProvideAuth } from "../services/auth";
@@ -16,7 +16,7 @@ interface indexProps {}
 export const Home: NextPage<indexProps> = ({}) => {
   const [j, setJ] = useState<any[]>([]);
   const [searchVal, setSearchVal] = useState<String>();
-  const auth = useProvideAuth();
+ 
   const [k, setK] = useState<any[]>([]);
   const [saves, setSaves] = useState();
   const d = useContext(authContext);
@@ -24,14 +24,6 @@ export const Home: NextPage<indexProps> = ({}) => {
       // @ts-ignore
     searchVal > 0 && setPage(1);
   }, [searchVal]);
-  const signOut = () => {
-    auth
-      .signout()
-      .then(() => {})
-      .catch((err) => {
-        console.log(err.message);
-      });
-  };
 
   useEffect(() => {
     const p = [];
@@ -92,12 +84,102 @@ export const Home: NextPage<indexProps> = ({}) => {
         <Box
           display="grid"
           sx={{
-            gridTemplateRows: "10% 60% 30%",
+            gridTemplateRows:[ " 45% 10% 45%", "45% 10% 45%", "60% 10% 30%",],
             width: "100%",
-            height: "100%",
+            height: "120%",
         
           }}
         >
+         
+          <Box
+            sx={{
+              width: "calc(75vw-68px)",
+              p: 3,
+              borderRadius: 20,
+            }}
+          >
+            <Box sx={{ width: "100%", mb: 2 }}>
+        
+              <Text sx={{ color: "yellowText", fontSize: 28 }}>
+                Your Recent Finds
+              </Text>
+              
+            </Box>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: ["space-around","space-around","space-between"],
+              }}
+            >
+              <Box
+                sx={{
+                  width: "35%",
+                  
+                  borderRadius: 20,
+                  textAlign: "center",
+                  display: "grid",
+                  gridTemplateColumns: "50% 50%",
+                  gridTemplateRows: "50% 50%",
+                  color: "white",
+                  boxShadow: "0px 0px 3px #181B1A,0px 0px 10px #181B1A20",
+                }}
+              >
+                {j.map((x, i) => (
+                  <Box
+                  key={i}
+                    as="a"
+                    href={x.external}
+                    sx={{
+                      backgroundImage: `url(${x.art})`,
+                      width: "100%",
+                      height: 140,
+                      backgroundSize: "cover",
+                      transition: "all 300ms ease",
+                      ":hover": {
+                        transform: "scale(1.1)",
+                        cursor: "pointer",
+                        borderRadius: 5,
+                      },
+                    }}
+                  ></Box>
+                ))}
+              </Box>
+              <Box
+                sx={{
+                  width: "35%",
+    
+                  borderRadius: 20,
+                  textAlign: "center",
+                  display: "grid",
+                  gridTemplateColumns: "50% 50%",
+                  gridTemplateRows: "50% 50%",
+                  color: "white",
+                }}
+              >
+                {k.map((x, i) => (
+                  <Box
+                  key={i}
+                    as="a"
+                    href={x.external}
+                    sx={{
+                      backgroundImage: `url(${x.art})`,
+                      width: "100%",
+ 
+                      backgroundSize: "cover",
+                      transition: "all 300ms ease",
+                      ":hover": {
+                        transform: "scale(1.1)",
+                        cursor: "pointer",
+                        borderRadius: 5,
+                      },
+                    }}
+                  ></Box>
+                ))}
+              </Box>
+            </Box>
+          </Box>
           <Box
             sx={{
               width: "calc(75vw-68px)",
@@ -127,8 +209,9 @@ export const Home: NextPage<indexProps> = ({}) => {
                   <BsSearch />
                 </Text>
               </Box>
-              <Box>
+              <Box >
                 <Input
+                
                   color="orangeText"
                   value={searchVal}
                   onChange={(e) => setSearchVal(e.target.value)}
@@ -145,121 +228,23 @@ export const Home: NextPage<indexProps> = ({}) => {
                 pr: 10,
               }}
             >
-              {d.userID && (
-                <Box
-                  onClick={() => signOut()}
-                  sx={{
-                    display: "inline",
-                    mx: 1,
-                    color: "yellowText",
-                    cursor: "pointer",
-                  }}
-                >
-                  <Box>Sign Out</Box>
-                </Box>
-              )}
+           
             </Box>
           </Box>
           <Box
             sx={{
               width: "calc(75vw-68px)",
-              height: "100%",
-              p: 3,
-              borderRadius: 20,
-            }}
-          >
-            <Box sx={{ width: "100%", mb: 2 }}>
-              <Text sx={{ color: "yellowText", fontSize: 28 }}>
-                Your Recent Finds
-              </Text>
-            </Box>
-            <Box
-              sx={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: ["space-around","space-around","space-between"],
-              }}
-            >
-              <Box
-                sx={{
-                  width: "35%",
-                  height: "35%",
-                  borderRadius: 20,
-                  textAlign: "center",
-                  display: "grid",
-                  gridTemplateColumns: "50% 50%",
-                  gridTemplateRows: "50% 50%",
-                  color: "white",
-                  boxShadow: "0px 0px 3px #181B1A,0px 0px 10px #181B1A20",
-                }}
-              >
-                {j.map((x, i) => (
-                  <Box
-                    as="a"
-                    href={x.external}
-                    sx={{
-                      backgroundImage: `url(${x.art})`,
-                      width: "100%",
-                      height: 140,
-                      backgroundSize: "cover",
-                      transition: "all 300ms ease",
-                      ":hover": {
-                        transform: "scale(1.1)",
-                        cursor: "pointer",
-                        borderRadius: 5,
-                      },
-                    }}
-                  ></Box>
-                ))}
-              </Box>
-              <Box
-                sx={{
-                  width: "35%",
-                  height: "35%",
-                  borderRadius: 20,
-                  textAlign: "center",
-                  display: "grid",
-                  gridTemplateColumns: "50% 50%",
-                  gridTemplateRows: "50% 50%",
-                  color: "white",
-                }}
-              >
-                {k.map((x, i) => (
-                  <Box
-                    as="a"
-                    href={x.external}
-                    sx={{
-                      backgroundImage: `url(${x.art})`,
-                      width: "100%",
-                      height: 140,
-                      backgroundSize: "cover",
-                      transition: "all 300ms ease",
-                      ":hover": {
-                        transform: "scale(1.1)",
-                        cursor: "pointer",
-                        borderRadius: 5,
-                      },
-                    }}
-                  ></Box>
-                ))}
-              </Box>
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              width: "calc(75vw-68px)",
-              height: "100%",
+            
 
-              p: 1,
+              p: 3,
               borderRadius: 20,
             }}
           >
             {saves && 
             // @ts-ignore
             saves.slice(page * 4 - 4, page * 4).length > 0 && (
-              <Box sx={{ width: "100%", mt: -5 }}>
-                <Text sx={{ color: "yellowText", fontSize: 28, mb: 2 }}>
+              <Box sx={{ width: "100%", mt: 0 }}>
+                <Text sx={{ color: "yellowText", fontSize: 28, my: 25 }}>
                   Your Liked Finds
                 </Text>
                 <Box
@@ -275,6 +260,7 @@ export const Home: NextPage<indexProps> = ({}) => {
                     // @ts-ignore
                     filteredSaves.reverse().slice(page * 4 - 4, page * 4).map((x, i) => (
                       <Box
+                      key={i}
                         as="a"
                         href={x.external}
                         sx={{
@@ -283,8 +269,8 @@ export const Home: NextPage<indexProps> = ({}) => {
                           backgroundImage: `url(${x.art})`,
                           backgroundSize: "cover",
                           mx: 2,
-                          width: 150,
-                          height: 150,
+                          width: 125,
+                          height: 125,
                         }}
                       >
                         {/* <Text sx={{ bg: "#8fffc7", color: "text" }}>
@@ -295,9 +281,8 @@ export const Home: NextPage<indexProps> = ({}) => {
                   <Box
                     as="a"
                     sx={{
-                      bg: "yellowText",
+                      color: "yellowText",
                       borderRadius: 20,
-                      backgroundSize: "cover",
                       mx: 2,
                       width: 150,
                       height: 150,
@@ -305,32 +290,37 @@ export const Home: NextPage<indexProps> = ({}) => {
                       alignItems: "center",
                     }}
                   >
+                      {page > 1 && (
+                      <Text
+                        onClick={() => setPage(page - 1)}
+                        sx={{
+                          color: "yellowText",
+                          textAlign: "center",
+                          cursor: "pointer",
+                          display: 'inline',
+                          fontSize: 64
+                        }}
+                      >
+                        <BsArrow90DegLeft />
+                      </Text>
+                    )}
                     {// @ts-ignore
                     saves.slice((page + 1) * 4 - 4, (page + 1) * 4).length >
                       0 && (
                       <Text
                         onClick={() => setPage(page + 1)}
                         sx={{
-                          color: "text",
+                          color: "yellowText",
                           textAlign: "center",
                           cursor: "pointer",
+                          display: 'inline',
+                          fontSize: 64
                         }}
                       >
-                        Load More
+                        <BsArrow90DegRight />
                       </Text>
                     )}
-                    {page > 1 && (
-                      <Text
-                        onClick={() => setPage(page - 1)}
-                        sx={{
-                          color: "text",
-                          textAlign: "center",
-                          cursor: "pointer",
-                        }}
-                      >
-                        Load Previous
-                      </Text>
-                    )}
+                  
                   </Box>
                 </Box>
               </Box>
