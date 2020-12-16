@@ -28,18 +28,18 @@ function MyApp({ Component, pageProps }) {
             "Want to find music that fits exactly what you want? This app uses Spotify API to recommend music based on what you want or if you want to try some new music, you can randomize it. Spotify Random - New Music Spotify Finder Tool",
           images: [
             {
-              url: "https://i.gyazo.com/213a79767619ed45e919bde888038d07.png",
+              url: "https://pbs.twimg.com/media/EpX6galUUAEu-J5?format=jpg&name=4096x4096",
               width: 2698,
               height: 1414,
               alt: "Og Image Alt",
             },
             {
-              url: "https://i.gyazo.com/fc4a1185cecac5c05172e19694cba1b2.png",
+              url: "https://pbs.twimg.com/media/EpX6hEgVoAEhr05?format=jpg&name=large",
               width: 2688,
               height: 1312,
               alt: "Og Image Alt Second",
             },
-            { url: "https://i.gyazo.com/a46cb41f634133fbb935da540af51502.png" },
+            { url: "https://pbs.twimg.com/media/EpX6galUUAEu-J5?format=jpg&name=4096x4096" },
           ],
           site_name: "Spotify Random",
         }}
