@@ -30,6 +30,7 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
             width: '100vw', minHeight: '100vh'
         }}>
             <Box>
+                {/* @ts-ignore */}
               <Logo />
             {nav.map((x, i) => (
             <Box onClick={() => router.push(x.slug)}
