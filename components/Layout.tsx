@@ -103,20 +103,7 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
                 },
               }}
             >
-                  {d.userID && (
-                <Box
-                  onClick={() => signOut()}
-                  sx={{
-                    display: "inline",
-                    mx: 1,
-                    color: "yellowText",
-                    cursor: "pointer",
-                    fontSize: [20,20,20]
-                  }}
-                >
-                  <Box>Sign Out</Box>
-                </Box>
-              )}
+               
               <Text
                 sx={{
                   color: router.asPath === x.slug ? "orangeText" : "text",
