@@ -51,6 +51,7 @@ export function useProvideAuth() {
                 setUser(false)
             }
         });
+        
     },[]);
 
     return {
